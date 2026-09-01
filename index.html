@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Trip Shiori - 旅行のしおり
+    </title>
+
+
+    <!-- 自作CSS -->
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- Leaflet CSS -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         ヘッダー
+    ======================================== -->
+
+    <header class="header">
+
+        <div class="header-title">
+
+            <span class="logo">
+                TRIP SHIORI
+            </span>
+
+            <h1>
+                旅行のしおり
+            </h1>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <button id="pdfButton" class="pdf-button" type="button">
+                PDFとして出力
+            </button>
+
+
+            <!-- スマートフォン用 -->
+
+            <div class="mobile-view-switch">
+
+                <button id="editViewButton" class="view-switch-button" type="button">
+                    ✏️ 編集
+                </button>
+
+
+                <button id="shioriViewButton" class="view-switch-button active" type="button">
+                    📖 しおり
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ========================================
+         メイン
+    ======================================== -->
+
+    <main class="container">
+
+
+        <!-- ====================================
+             左：編集画面
+        ==================================== -->
+
+        <section class="editor">
+
+            <h2>
+                旅行情報
+            </h2>
+
+
+            <!-- 旅行タイトル -->
+
+            <div class="form-group">
+
+                <label for="tripTitle">
+                    旅行タイトル
+                </label>
+
+                <input type="text" id="tripTitle" placeholder="例：東京・大阪旅行" value="東京・大阪旅行">
+
+            </div>
+
+
+            <!-- 日程 -->
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="startDate">
+                        開始日
+                    </label>
+
+                    <input type="date" id="startDate">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="endDate">
+                        終了日
+                    </label>
+
+                    <input type="date" id="endDate">
+
+                </div>
+
+            </div>
+
+
+            <!-- 参加者 -->
+
+            <div class="form-group">
+
+                <label for="participants">
+                    参加者
+                </label>
+
+                <input type="text" id="participants" placeholder="例：山田、佐藤、鈴木">
+
+            </div>
+
+            <!-- =========================
+     宿泊地
+========================= -->
+
+            <div class="section-header">
+
+                <h2>
+                    宿泊地
+                </h2>
+
+                <button id="addStayButton" class="add-button" type="button">
+                    ＋ 宿泊地を追加
+                </button>
+
+            </div>
+
+
+            <div id="stayList"></div>
+
+
+            <!-- ====================================
+                 行程
+            ==================================== -->
+
+            <div class="section-header">
+
+                <h2>
+                    行程
+                </h2>
+
+
+                <button id="addScheduleButton" class="add-button" type="button">
+                    ＋ 行程を追加
+                </button>
+
+            </div>
+
+
+            <div id="scheduleList"></div>
+
+
+            <!-- ====================================
+                 費用
+            ==================================== -->
+
+            <div class="section-header">
+
+                <h2>
+                    費用
+                </h2>
+
+
+                <button id="addCostButton" class="add-button" type="button">
+                    ＋ 費用を追加
+                </button>
+
+            </div>
+
+
+            <div id="costList"></div>
+
+
+            <!-- ====================================
+                 メモ
+            ==================================== -->
+
+            <h2>
+                メモ・持ち物
+            </h2>
+
+
+            <div class="form-group">
+
+                <textarea id="memo" rows="6" placeholder="持ち物や注意事項などを入力してください"></textarea>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================
+             右：プレビュー
+        ==================================== -->
+
+        <section class="preview-area">
+
+
+            <div class="preview-header">
+
+                <h2>
+                    プレビュー
+                </h2>
+
+                <span>
+                    入力内容はリアルタイムで反映されます
+                </span>
+
+            </div>
+
+
+            <article id="preview" class="shiori">
+
+
+                <!-- ==================================
+                     表紙
+                ================================== -->
+
+                <div class="cover">
+
+                    <span class="cover-logo">
+                        TRIP SHIORI
+                    </span>
+
+
+                    <h1 id="previewTitle">
+                        東京・大阪旅行
+                    </h1>
+
+
+                    <p id="previewDate">
+                        日程を入力してください
+                    </p>
+
+
+                    <p id="previewParticipants"></p>
+
+                </div>
+
+
+                <!-- ==================================
+                     行程
+                ================================== -->
+
+                <section class="preview-section">
+
+                    <h2>
+                        行程
+                    </h2>
+
+
+                    <div id="previewSchedules">
+
+                        <p class="empty-message">
+                            行程を追加してください。
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ==================================
+                     地図
+                ================================== -->
+
+                <section class="preview-section map-section">
+
+                    <h2>
+                        🗺️ 行程マップ
+                    </h2>
+
+
+                    <div id="map" class="map"></div>
+
+                </section>
+
+
+                <!-- ==================================
+                     費用
+                ================================== -->
+
+                <section class="preview-section">
+
+                    <h2>
+                        費用
+                    </h2>
+
+
+                    <div id="previewCosts">
+
+                        <p class="empty-message">
+                            費用を追加してください。
+                        </p>
+
+                    </div>
+
+
+                    <div id="previewCategoryTotals"></div>
+
+
+                    <div class="total">
+
+                        <span>
+                            合計
+                        </span>
+
+
+                        <strong id="previewTotal">
+                            ¥0
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ==================================
+                     メモ
+                ================================== -->
+
+                <section class="preview-section">
+
+                    <h2>
+                        メモ・持ち物
+                    </h2>
+
+
+                    <p id="previewMemo" class="memo">
+                        特になし
+                    </p>
+
+                </section>
+
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================================
+         行程入力テンプレート
+    ======================================== -->
+
+    <template id="scheduleTemplate">
+
+        <div class="schedule-item">
+
+
+            <!-- 日付・時刻 -->
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>
+                        日付
+                    </label>
+
+
+                    <input type="date" class="schedule-date">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        時刻
+                    </label>
+
+
+                    <input type="time" class="schedule-time">
+
+                </div>
+
+            </div>
+
+
+            <!-- 場所 -->
+
+            <div class="form-group">
+
+                <label>
+                    場所
+                </label>
+
+
+                <input type="text" class="schedule-place" placeholder="例：東京駅">
+
+
+                <button type="button" class="map-add-button">
+                    📍 地図に登録
+                </button>
+
+
+                <div class="map-status"></div>
+
+            </div>
+
+
+            <!-- 内容 -->
+
+            <div class="form-group">
+
+                <label>
+                    内容
+                </label>
+
+
+                <input type="text" class="schedule-content" placeholder="例：新幹線で大阪へ移動">
+
+            </div>
+
+
+            <!-- 移動手段 -->
+
+            <div class="form-group">
+
+                <label>
+                    移動手段
+                </label>
+
+
+                <input type="text" class="schedule-transport" placeholder="例：新幹線">
+
+            </div>
+
+
+            <!-- URL -->
+
+            <div class="form-group">
+
+                <label>
+                    URL
+                </label>
+
+
+                <input type="url" class="schedule-url" placeholder="https://...">
+
+
+                <small class="input-help">
+                    Google Mapsや公式サイトなど
+                </small>
+
+            </div>
+
+
+            <!-- 削除 -->
+
+            <button class="delete-button" type="button">
+                この行程を削除
+            </button>
+
+        </div>
+
+    </template>
+    
+    <!-- ========================================
+     宿泊地入力テンプレート
+======================================== -->
+
+<template id="stayTemplate">
+
+    <div class="stay-item">
+
+        <div class="form-group">
+
+            <label>
+                宿泊日
+            </label>
+
+            <input
+                type="date"
+                class="stay-date"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                宿泊地
+            </label>
+
+            <input
+                type="text"
+                class="stay-place"
+                placeholder="例：ホテルニュー○○"
+            >
+
+        </div>
+
+
+        <button
+            class="delete-button"
+            type="button"
+        >
+            この宿泊地を削除
+        </button>
+
+    </div>
+
+</template>
+
+
+    <!-- ========================================
+         費用入力テンプレート
+    ======================================== -->
+
+    <template id="costTemplate">
+
+        <div class="cost-item">
+
+
+            <!-- 発生日 -->
+
+            <div class="form-group">
+
+                <label>
+                    発生日
+                </label>
+
+
+                <input type="date" class="cost-date">
+
+            </div>
+
+
+            <!-- カテゴリ -->
+
+            <div class="form-group">
+
+                <label>
+                    カテゴリ
+                </label>
+
+
+                <select class="cost-category">
+
+                    <option value="交通費">
+                        🚃 交通費
+                    </option>
+
+
+                    <option value="宿泊費">
+                        🏨 宿泊費
+                    </option>
+
+
+                    <option value="食費">
+                        🍴 食費
+                    </option>
+
+
+                    <option value="観光費">
+                        🎫 観光費
+                    </option>
+
+
+                    <option value="その他">
+                        📦 その他
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- 項目・金額 -->
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>
+                        項目
+                    </label>
+
+
+                    <input type="text" class="cost-name" placeholder="例：新幹線">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        金額
+                    </label>
+
+
+                    <input type="number" class="cost-amount" min="0" value="0" placeholder="0">
+
+                </div>
+
+            </div>
+
+
+            <!-- 削除 -->
+
+            <button class="delete-button" type="button">
+                この費用を削除
+            </button>
+
+        </div>
+
+    </template>
+
+
+    <!-- ========================================
+         Leaflet JavaScript
+    ======================================== -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+    <!-- 自作JavaScript -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,2343 @@
+/* ========================================
+   Trip Shiori
+======================================== */
+
+
+/* ========================================
+   基本設定
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background: #f4f5f7;
+
+    color: #222;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans JP",
+        sans-serif;
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   ヘッダー
+======================================== */
+
+.header {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #dddddd;
+
+    padding: 14px 28px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.header-title {
+    min-width: 0;
+}
+
+.header-title h1 {
+    margin: 3px 0 0;
+
+    font-size: 22px;
+
+    line-height: 1.3;
+}
+
+.logo {
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #666666;
+}
+
+
+/* ========================================
+   ヘッダー右側
+======================================== */
+
+.header-actions {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+}
+
+
+/* ========================================
+   ボタン
+======================================== */
+
+button {
+    border: none;
+
+    border-radius: 9px;
+
+    padding: 10px 14px;
+
+    font-family: inherit;
+
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.pdf-button {
+    background: #222222;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.add-button {
+    background: #eef0f2;
+
+    color: #222222;
+
+    font-weight: 600;
+}
+
+.delete-button {
+    background: #fff0f0;
+
+    color: #b00020;
+
+    margin-top: 5px;
+}
+
+
+/* ========================================
+   スマホ切り替えボタン
+   PCでは非表示
+======================================== */
+
+.mobile-view-switch {
+    display: none;
+}
+
+
+/* ========================================
+   メインレイアウト
+======================================== */
+
+.container {
+    width: 100%;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    padding: 24px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(360px, 500px)
+        minmax(0, 1fr);
+
+    gap: 24px;
+}
+
+
+/* ========================================
+   編集・プレビュー
+======================================== */
+
+.editor,
+.preview-area {
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 14px;
+
+    padding: 24px;
+
+    min-width: 0;
+}
+
+
+/* ========================================
+   フォーム
+======================================== */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+
+    min-width: 0;
+
+    padding: 10px 12px;
+
+    border: 1px solid #cccccc;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #222222;
+
+    font-size: 14px;
+
+    font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+
+    border-color: #777777;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+textarea {
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+.form-row {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* ========================================
+   セクション見出し
+======================================== */
+
+.section-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 28px;
+
+    margin-bottom: 12px;
+}
+
+.section-header h2 {
+    margin: 0;
+}
+
+
+/* ========================================
+   行程・費用カード
+======================================== */
+
+.schedule-item,
+.cost-item {
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 10px;
+
+    padding: 15px;
+
+    margin-bottom: 12px;
+}
+
+
+/* ========================================
+   URL
+======================================== */
+
+.input-help {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #777777;
+
+    font-size: 12px;
+}
+
+.schedule-url-link {
+    display: inline-block;
+
+    margin-top: 8px;
+
+    color: #0066cc;
+
+    font-size: 13px;
+
+    text-decoration: none;
+}
+
+.schedule-url-link:hover {
+    text-decoration: underline;
+}
+
+.map-add-button {
+    margin-top: 6px;
+
+    background: #eef0f2;
+
+    color: #222222;
+
+    font-size: 13px;
+}
+
+.map-status {
+    margin-top: 5px;
+
+    color: #666666;
+
+    font-size: 12px;
+}
+
+
+/* ========================================
+   プレビュー
+======================================== */
+
+.preview-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+.preview-header h2 {
+    margin: 0;
+}
+
+.preview-header span {
+    color: #777777;
+
+    font-size: 12px;
+}
+
+.shiori {
+    width: 100%;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    background: #ffffff;
+}
+
+/* ========================================
+   旅行のしおり 表紙
+======================================== */
+
+.cover {
+
+    position: relative;
+
+    min-height: 520px;
+
+    padding: 70px 60px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f5f7fa 0%,
+            #ffffff 55%,
+            #eef2f6 100%
+        );
+
+    border-bottom: 1px solid #dddddd;
+
+}
+
+
+/* ----------------------------------------
+   表紙の装飾
+---------------------------------------- */
+
+.cover::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+
+    height: 280px;
+
+    top: -120px;
+
+    right: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.75
+    );
+
+}
+
+
+.cover::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+
+    height: 220px;
+
+    bottom: -100px;
+
+    left: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.7
+    );
+
+}
+
+
+/* ----------------------------------------
+   TRIP SHIORI
+---------------------------------------- */
+
+.cover-logo {
+
+    position: relative;
+
+    z-index: 1;
+
+    margin-bottom: 20px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 5px;
+
+    color: #666666;
+
+}
+
+
+/* ----------------------------------------
+   タイトル
+---------------------------------------- */
+
+.cover h1 {
+
+    position: relative;
+
+    z-index: 1;
+
+    max-width: 100%;
+
+    margin: 0;
+
+    color: #1f1f1f;
+
+    font-size: 44px;
+
+    font-weight: 800;
+
+    line-height: 1.25;
+
+    letter-spacing: 1px;
+
+    word-break: break-word;
+
+}
+
+
+/* ----------------------------------------
+   日程
+---------------------------------------- */
+
+.cover #previewDate {
+
+    position: relative;
+
+    z-index: 1;
+
+    margin: 22px 0 4px;
+
+    color: #555555;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+/* ----------------------------------------
+   参加者
+---------------------------------------- */
+
+.cover #previewParticipants {
+
+    position: relative;
+
+    z-index: 1;
+
+    margin: 4px 0 0;
+
+    color: #777777;
+
+    font-size: 14px;
+
+}
+
+
+/* ----------------------------------------
+   表紙下部のライン
+---------------------------------------- */
+
+.cover h1::after {
+
+    content: "";
+
+    display: block;
+
+    width: 70px;
+
+    height: 3px;
+
+    margin: 22px auto 0;
+
+    border-radius: 999px;
+
+    background: #222222;
+
+}
+
+
+/* ========================================
+   スマートフォン用表紙
+======================================== */
+
+@media (max-width: 700px) {
+
+    .cover {
+
+        min-height: 430px;
+
+        padding:
+            50px
+            24px;
+
+    }
+
+
+    .cover-logo {
+
+        margin-bottom: 16px;
+
+        font-size: 11px;
+
+        letter-spacing: 4px;
+
+    }
+
+
+    .cover h1 {
+
+        font-size: 32px;
+
+        line-height: 1.3;
+
+    }
+
+
+    .cover #previewDate {
+
+        margin-top: 20px;
+
+        font-size: 14px;
+
+    }
+
+
+    .cover #previewParticipants {
+
+        font-size: 13px;
+
+    }
+
+
+}
+
+
+/* ========================================
+   小型スマートフォン
+======================================== */
+
+@media (max-width: 400px) {
+
+    .cover {
+
+        min-height: 390px;
+
+        padding:
+            42px
+            18px;
+
+    }
+
+
+    .cover-logo {
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+
+    }
+
+
+    .cover h1 {
+
+        font-size: 28px;
+
+    }
+
+}
+
+
+.cover {
+    min-height: 330px;
+
+    padding: 60px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    background: #f7f7f7;
+
+    border-bottom: 1px solid #dddddd;
+}
+
+.cover-logo {
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: #666666;
+}
+
+.cover h1 {
+    margin: 18px 0;
+
+    font-size: 40px;
+
+    line-height: 1.25;
+
+    word-break: break-word;
+}
+
+.cover p {
+    margin: 4px 0;
+
+    color: #666666;
+}
+
+
+/* ========================================
+   プレビューセクション
+======================================== */
+
+.preview-section {
+    padding: 30px 45px;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.preview-section h2 {
+    margin-top: 0;
+
+    border-bottom: 2px solid #222222;
+
+    padding-bottom: 8px;
+}
+
+
+/* ========================================
+   日ごとのセクション
+======================================== */
+
+.day-section {
+    margin-bottom: 40px;
+}
+
+.day-section:last-child {
+    margin-bottom: 0;
+}
+
+.day-header {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 24px;
+
+    padding: 12px 16px;
+
+    border-radius: 12px;
+
+    background: #f3f6fa;
+}
+
+.day-number {
+    font-size: 1.15rem;
+
+    font-weight: 700;
+}
+
+.day-date {
+    color: #666666;
+
+    font-size: 0.95rem;
+}
+
+
+/* ========================================
+   タイムライン
+======================================== */
+
+.timeline {
+    width: 100%;
+}
+
+.timeline-item {
+    display: grid;
+
+    grid-template-columns:
+        70px
+        40px
+        minmax(0, 1fr);
+
+    min-height: 90px;
+}
+
+.timeline-time {
+    padding-top: 2px;
+
+    padding-right: 12px;
+
+    text-align: right;
+
+    font-size: 0.95rem;
+
+    font-weight: 700;
+}
+
+.timeline-line {
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.timeline-dot {
+    position: relative;
+
+    z-index: 2;
+
+    width: 16px;
+
+    height: 16px;
+
+    margin-top: 3px;
+
+    border-radius: 50%;
+
+    background: #333333;
+
+    font-size: 0;
+}
+
+.timeline-connector {
+    position: absolute;
+
+    top: 18px;
+
+    bottom: -1px;
+
+    width: 2px;
+
+    background: #d8d8d8;
+}
+
+.timeline-content {
+    min-width: 0;
+
+    padding:
+        0
+        0
+        28px
+        10px;
+}
+
+.timeline-place {
+    font-size: 1.05rem;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+
+    word-break: break-word;
+}
+
+.timeline-description {
+    margin-top: 5px;
+
+    color: #555555;
+
+    font-size: 0.9rem;
+
+    line-height: 1.6;
+
+    word-break: break-word;
+}
+
+.timeline-transport {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 8px;
+
+    padding: 4px 9px;
+
+    border-radius: 999px;
+
+    background: #f1f1f1;
+
+    font-size: 0.8rem;
+}
+
+.timeline-clickable {
+    cursor: pointer;
+
+    border-radius: 10px;
+
+    transition:
+        background-color 0.15s ease;
+}
+
+.timeline-clickable:hover {
+    background: #f7f7f7;
+}
+
+
+/* ========================================
+   費用
+======================================== */
+
+.cost-day-section {
+    margin-bottom: 30px;
+}
+
+.cost-day-header {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    background: #f7f7f7;
+}
+
+.cost-preview {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.cost-category-preview {
+    margin-bottom: 2px;
+
+    color: #666666;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+.cost-preview > span:last-child {
+    flex-shrink: 0;
+
+    white-space: nowrap;
+
+    font-weight: 600;
+}
+
+.cost-name {
+    word-break: break-word;
+}
+
+.category-total {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 8px 0;
+}
+
+.total {
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 30px;
+
+    margin-top: 20px;
+
+    font-size: 18px;
+}
+
+.total strong {
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   メモ
+======================================== */
+
+.memo {
+    white-space: pre-wrap;
+
+    line-height: 1.8;
+
+    word-break: break-word;
+}
+
+.empty-message {
+    color: #888888;
+}
+
+
+/* ========================================
+   地図
+======================================== */
+
+.map-section {
+    overflow: hidden;
+}
+
+.map {
+    width: 100%;
+
+    height: 400px;
+
+    margin-top: 16px;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   番号付きマーカー
+======================================== */
+
+.numbered-marker-wrapper {
+    background: transparent;
+
+    border: none;
+}
+
+.numbered-marker {
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #222222;
+
+    color: #ffffff;
+
+    border: 3px solid #ffffff;
+
+    box-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.3);
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+/* ========================================
+   タブレット
+======================================== */
+
+@media (max-width: 1050px) {
+
+    .container {
+
+        grid-template-columns:
+            minmax(300px, 420px)
+            minmax(0, 1fr);
+
+        gap: 16px;
+
+        padding: 16px;
+    }
+
+    .editor,
+    .preview-area {
+
+        padding: 18px;
+    }
+
+    .preview-section {
+
+        padding-left: 30px;
+
+        padding-right: 30px;
+    }
+
+    .cover {
+
+        padding: 45px;
+    }
+
+}
+
+
+/* ========================================
+   スマートフォン
+======================================== */
+
+@media (max-width: 700px) {
+
+    /* --------------------------------
+       ページ
+    -------------------------------- */
+
+    body {
+
+        background: #ffffff;
+
+    }
+
+
+    /* --------------------------------
+       ヘッダー
+    -------------------------------- */
+
+    .header {
+
+        position: sticky;
+
+        top: 0;
+
+        z-index: 1000;
+
+        padding:
+            10px
+            12px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 8px;
+
+    }
+
+
+    .header-title {
+
+        text-align: center;
+
+    }
+
+
+    .header-title h1 {
+
+        font-size: 18px;
+
+    }
+
+
+    .logo {
+
+        font-size: 9px;
+
+        letter-spacing: 1.5px;
+
+    }
+
+
+    .header-actions {
+
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 8px;
+
+    }
+
+
+    /* --------------------------------
+       PDF
+    -------------------------------- */
+
+    .pdf-button {
+
+        width: 100%;
+
+        min-height: 42px;
+
+        padding:
+            9px
+            12px;
+
+        font-size: 13px;
+
+    }
+
+
+    /* --------------------------------
+       切り替えボタン
+    -------------------------------- */
+
+    .mobile-view-switch {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+        width: 100%;
+
+        padding: 3px;
+
+        gap: 3px;
+
+        border-radius: 10px;
+
+        background: #eef0f2;
+
+    }
+
+
+    .view-switch-button {
+
+        min-height: 40px;
+
+        padding:
+            7px
+            10px;
+
+        border-radius: 8px;
+
+        background: transparent;
+
+        color: #666666;
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+    }
+
+
+    .view-switch-button.active {
+
+        background: #ffffff;
+
+        color: #222222;
+
+        box-shadow:
+            0
+            1px
+            4px
+            rgba(0, 0, 0, 0.12);
+
+    }
+
+
+    /* --------------------------------
+       編集 / しおり切り替え
+    -------------------------------- */
+
+    body.shiori-mode .editor {
+
+        display: none !important;
+
+    }
+
+
+    body.shiori-mode .preview-area {
+
+        display: block !important;
+
+        width: 100%;
+
+    }
+
+
+    body.edit-mode .editor {
+
+        display: block !important;
+
+        width: 100%;
+
+    }
+
+
+    body.edit-mode .preview-area {
+
+        display: none !important;
+
+    }
+
+
+    /* --------------------------------
+       メイン
+    -------------------------------- */
+
+    .container {
+
+        display: block;
+
+        width: 100%;
+
+        padding: 0;
+
+    }
+
+
+    .editor,
+    .preview-area {
+
+        width: 100%;
+
+        border: none;
+
+        border-radius: 0;
+
+        padding: 16px;
+
+    }
+
+
+    /* --------------------------------
+       フォーム
+    -------------------------------- */
+
+    .form-row {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+
+    }
+
+
+    input,
+    select,
+    textarea {
+
+        min-height: 44px;
+
+        font-size: 16px;
+
+    }
+
+
+    button {
+
+        min-height: 42px;
+
+    }
+
+
+    /* --------------------------------
+       セクション
+    -------------------------------- */
+
+    .section-header {
+
+        margin-top: 24px;
+
+    }
+
+
+    .section-header h2 {
+
+        font-size: 20px;
+
+    }
+
+
+    .add-button {
+
+        padding:
+            9px
+            11px;
+
+        font-size: 13px;
+
+        white-space: nowrap;
+
+    }
+
+
+    /* --------------------------------
+       入力カード
+    -------------------------------- */
+
+    .schedule-item,
+    .cost-item {
+
+        padding: 14px;
+
+        border-radius: 11px;
+
+    }
+
+
+    .delete-button {
+
+        width: 100%;
+
+        margin-top: 8px;
+
+    }
+
+
+    .map-add-button {
+
+        width: 100%;
+
+    }
+
+
+    /* --------------------------------
+       プレビュー
+    -------------------------------- */
+
+    .preview-area {
+
+        padding: 0;
+
+    }
+
+
+    .preview-header {
+
+        display: none;
+
+    }
+
+
+    .shiori {
+
+        width: 100%;
+
+        max-width: none;
+
+    }
+
+
+    /* --------------------------------
+       表紙
+    -------------------------------- */
+
+    .cover {
+
+        min-height: 290px;
+
+        padding:
+            38px
+            24px;
+
+    }
+
+
+    .cover h1 {
+
+        font-size: 30px;
+
+        margin:
+            14px
+            0;
+
+    }
+
+
+    /* --------------------------------
+       プレビューセクション
+    -------------------------------- */
+
+    .preview-section {
+
+        padding:
+            24px
+            18px;
+
+    }
+
+
+    .preview-section h2 {
+
+        font-size: 20px;
+
+    }
+
+
+    /* --------------------------------
+       日付
+    -------------------------------- */
+
+    .day-section {
+
+        margin-bottom: 28px;
+
+    }
+
+
+    .day-header {
+
+        gap: 7px;
+
+        margin-bottom: 20px;
+
+        padding:
+            10px
+            12px;
+
+    }
+
+
+    .day-number {
+
+        font-size: 1rem;
+
+    }
+
+
+    .day-date {
+
+        font-size: 0.85rem;
+
+    }
+
+
+    /* --------------------------------
+       タイムライン
+    -------------------------------- */
+
+    .timeline-item {
+
+        grid-template-columns:
+            52px
+            26px
+            minmax(0, 1fr);
+
+        min-height: 78px;
+
+    }
+
+
+    .timeline-time {
+
+        padding-right: 7px;
+
+        font-size: 0.8rem;
+
+    }
+
+
+    .timeline-dot {
+
+        width: 14px;
+
+        height: 14px;
+
+    }
+
+
+    .timeline-connector {
+
+        top: 16px;
+
+    }
+
+
+    .timeline-content {
+
+        padding:
+            0
+            0
+            22px
+            7px;
+
+    }
+
+
+    .timeline-place {
+
+        font-size: 0.95rem;
+
+    }
+
+
+    .timeline-description {
+
+        font-size: 0.82rem;
+
+    }
+
+
+    .timeline-transport {
+
+        margin-top: 6px;
+
+        padding:
+            4px
+            8px;
+
+        font-size: 0.74rem;
+
+    }
+
+
+    /* --------------------------------
+       費用
+    -------------------------------- */
+
+    .cost-day-section {
+
+        margin-bottom: 24px;
+
+    }
+
+
+    .cost-day-header {
+
+        padding:
+            9px
+            11px;
+
+    }
+
+
+    .cost-preview {
+
+        gap: 10px;
+
+        padding:
+            9px
+            0;
+
+    }
+
+
+    .cost-category-preview {
+
+        font-size: 11px;
+
+    }
+
+
+    .total {
+
+        gap: 15px;
+
+        font-size: 17px;
+
+    }
+
+
+    /* --------------------------------
+       地図
+    -------------------------------- */
+
+    .map {
+
+        height: 320px;
+
+        margin:
+            16px
+            0
+            0;
+
+        width: 100%;
+
+        border-radius: 12px;
+
+    }
+
+
+    /* --------------------------------
+       URL
+    -------------------------------- */
+
+    .schedule-url-link {
+
+        display: inline-block;
+
+        padding:
+            4px
+            0;
+
+    }
+
+
+    /* --------------------------------
+       SVG / 番号付きマーカー
+    -------------------------------- */
+
+    .numbered-marker {
+
+        width: 32px;
+
+        height: 32px;
+
+        font-size: 14px;
+
+    }
+
+}
+
+
+/* ========================================
+   小さいスマートフォン
+======================================== */
+
+@media (max-width: 400px) {
+
+    .header {
+
+        padding:
+            9px
+            10px;
+
+    }
+
+
+    .header-title h1 {
+
+        font-size: 16px;
+
+    }
+
+
+    .pdf-button {
+
+        font-size: 12px;
+
+    }
+
+
+    .view-switch-button {
+
+        font-size: 12px;
+
+    }
+
+
+    .editor,
+    .preview-area {
+
+        padding: 12px;
+
+    }
+
+
+    .preview-section {
+
+        padding:
+            22px
+            14px;
+
+    }
+
+
+    .cover {
+
+        min-height: 260px;
+
+        padding:
+            32px
+            20px;
+
+    }
+
+
+    .cover h1 {
+
+        font-size: 26px;
+
+    }
+
+
+    .timeline-item {
+
+        grid-template-columns:
+            47px
+            24px
+            minmax(0, 1fr);
+
+    }
+
+
+    .timeline-time {
+
+        font-size: 0.74rem;
+
+    }
+
+
+    .timeline-place {
+
+        font-size: 0.9rem;
+
+    }
+
+
+    .timeline-description {
+
+        font-size: 0.78rem;
+
+    }
+
+
+    .map {
+
+        height: 280px;
+
+    }
+
+}
+
+
+/* ========================================
+   PDF
+======================================== */
+
+@media print {
+
+    body {
+
+        background: #ffffff;
+
+        margin: 0;
+
+        padding: 0;
+
+    }
+
+
+    .header,
+    .editor,
+    .preview-header {
+
+        display: none !important;
+
+    }
+
+
+    .container {
+
+        display: block;
+
+        max-width: none;
+
+        padding: 0;
+
+    }
+
+
+    .preview-area {
+
+        display: block;
+
+        border: none;
+
+        border-radius: 0;
+
+        padding: 0;
+
+    }
+
+
+    .shiori {
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+
+        box-shadow: none;
+
+        border: none;
+
+    }
+
+
+    .cover {
+
+        page-break-after: always;
+
+        break-after: page;
+
+    }
+
+
+    .day-section {
+
+        page-break-inside: avoid;
+
+        break-inside: avoid;
+
+    }
+
+
+    .timeline-item {
+
+        page-break-inside: avoid;
+
+        break-inside: avoid;
+
+    }
+
+
+    .cost-day-section {
+
+        page-break-inside: avoid;
+
+        break-inside: avoid;
+
+    }
+
+
+    .cost-preview,
+    .category-total,
+    .total {
+
+        page-break-inside: avoid;
+
+        break-inside: avoid;
+
+    }
+
+
+    a {
+
+        color: inherit;
+
+        text-decoration: none;
+
+    }
+
+
+    @page {
+
+        size: A4;
+
+        margin: 15mm;
+
+    }
+
+}
+
+/* ========================================
+   PC版レイアウトを明示的に固定
+======================================== */
+
+@media (min-width: 701px) {
+
+    /* --------------------------------
+       ヘッダー
+    -------------------------------- */
+
+    .header {
+        display: flex !important;
+
+        flex-direction: row !important;
+
+        justify-content: space-between !important;
+
+        align-items: center !important;
+
+        width: 100%;
+
+        padding:
+            14px
+            28px;
+    }
+
+
+    .header-title {
+        width: auto !important;
+
+        text-align: left !important;
+    }
+
+
+    .header-actions {
+        width: auto !important;
+
+        display: flex !important;
+
+        flex-direction: row !important;
+
+        align-items: center !important;
+
+        justify-content: flex-end !important;
+
+        gap: 10px;
+    }
+
+
+    .pdf-button {
+        width: auto !important;
+
+        flex-shrink: 0;
+
+        white-space: nowrap;
+    }
+
+
+    /* --------------------------------
+       スマホ用切り替えボタンはPCでは非表示
+    -------------------------------- */
+
+    .mobile-view-switch {
+        display: none !important;
+    }
+
+
+    /* --------------------------------
+       メインを2カラムに戻す
+    -------------------------------- */
+
+    .container {
+        display: grid !important;
+
+        grid-template-columns:
+            minmax(360px, 500px)
+            minmax(0, 1fr) !important;
+
+        width: 100%;
+
+        max-width: 1400px;
+
+        margin:
+            0
+            auto;
+
+        padding: 24px;
+
+        gap: 24px;
+    }
+
+
+    /* --------------------------------
+       編集画面・プレビューを表示
+    -------------------------------- */
+
+    .editor {
+        display: block !important;
+
+        width: auto !important;
+    }
+
+
+    .preview-area {
+        display: block !important;
+
+        width: auto !important;
+    }
+
+}
+
+/* ========================================
+   PDF出力：プレビューのみ
+   ※このブロックはCSSの一番最後に置く
+======================================== */
+
+@media print {
+
+    /* --------------------------------
+       ヘッダーを非表示
+    -------------------------------- */
+
+    body > .header {
+
+        display: none !important;
+
+    }
+
+
+    /* --------------------------------
+       左側の編集画面を非表示
+    -------------------------------- */
+
+    body > .container > .editor {
+
+        display: none !important;
+
+    }
+
+
+    /* --------------------------------
+       プレビューエリアだけ表示
+    -------------------------------- */
+
+    body > .container {
+
+        display: block !important;
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+
+        padding: 0;
+
+    }
+
+
+    body > .container > .preview-area {
+
+        display: block !important;
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+
+        padding: 0;
+
+        border: none;
+
+        border-radius: 0;
+
+        background: #ffffff;
+
+    }
+
+
+    /* --------------------------------
+       「プレビュー」という見出しも消す
+    -------------------------------- */
+
+    .preview-header {
+
+        display: none !important;
+
+    }
+
+
+    /* --------------------------------
+       しおり本体
+    -------------------------------- */
+
+    .shiori {
+
+        display: block !important;
+
+        width: 100%;
+
+        max-width: none;
+
+        margin: 0;
+
+        padding: 0;
+
+        background: #ffffff;
+
+        border: none;
+
+        box-shadow: none;
+
+    }
+
+
+    /* --------------------------------
+       表紙
+    -------------------------------- */
+
+    .cover {
+
+        display: flex !important;
+
+    }
+
+
+    /* --------------------------------
+       その他のプレビュー内容
+    -------------------------------- */
+
+    .preview-section {
+
+        display: block !important;
+
+    }
+
+
+    /* --------------------------------
+       不要なUIを非表示
+    -------------------------------- */
+
+    .mobile-view-switch,
+    .pdf-button {
+
+        display: none !important;
+
+    }
+
+
+    /* --------------------------------
+       ページ設定
+    -------------------------------- */
+
+    @page {
+
+        size: A4;
+
+        margin: 15mm;
+
+    }
+
+}
+
+/* ========================================
+   宿泊地
+======================================== */
+
+.stay-item {
+
+    margin-bottom: 12px;
+
+    padding: 15px;
+
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 10px;
+
+}
+
+
+.stay-preview {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-top: 18px;
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    background: #f7f7f7;
+
+}
+
+
+.stay-icon {
+
+    flex-shrink: 0;
+
+    font-size: 22px;
+
+}
+
+
+.stay-info {
+
+    min-width: 0;
+
+}
+
+
+.stay-label {
+
+    margin-bottom: 2px;
+
+    color: #777777;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+.stay-place-preview {
+
+    font-size: 0.95rem;
+
+    font-weight: 700;
+
+    word-break: break-word;
+
+}
+
+
+/* スマートフォン */
+
+@media (max-width: 700px) {
+
+    .stay-preview {
+
+        margin-top: 14px;
+
+        padding: 12px 14px;
+
+    }
+
+}
