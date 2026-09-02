@@ -17,10 +17,8 @@ html {
 
 body {
     margin: 0;
-
     background: #f4f5f7;
-
-    color: #222;
+    color: #222222;
 
     font-family:
         -apple-system,
@@ -41,24 +39,22 @@ body {
 
 .header {
     position: sticky;
-
     top: 0;
-
     z-index: 1000;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 14px 28px;
 
     background: #ffffff;
 
     border-bottom: 1px solid #dddddd;
-
-    padding: 14px 28px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 20px;
 }
 
 .header-title {
@@ -69,7 +65,6 @@ body {
     margin: 3px 0 0;
 
     font-size: 22px;
-
     line-height: 1.3;
 }
 
@@ -77,7 +72,6 @@ body {
     display: block;
 
     font-size: 11px;
-
     font-weight: 700;
 
     letter-spacing: 2px;
@@ -85,19 +79,14 @@ body {
     color: #666666;
 }
 
-
-/* ========================================
-   ヘッダー右側
-======================================== */
-
 .header-actions {
     display: flex;
-
     align-items: center;
-
     justify-content: flex-end;
 
     gap: 10px;
+
+    min-width: 0;
 }
 
 
@@ -107,7 +96,6 @@ body {
 
 button {
     border: none;
-
     border-radius: 9px;
 
     padding: 10px 14px;
@@ -123,34 +111,33 @@ button:active {
 
 .pdf-button {
     background: #222222;
-
     color: #ffffff;
 
     font-weight: 700;
-
     white-space: nowrap;
 }
 
 .add-button {
     background: #eef0f2;
-
     color: #222222;
 
     font-weight: 600;
+
+    white-space: nowrap;
 }
 
 .delete-button {
+    display: block;
+
+    margin-top: 8px;
+
     background: #fff0f0;
-
     color: #b00020;
-
-    margin-top: 5px;
 }
 
 
 /* ========================================
-   スマホ切り替えボタン
-   PCでは非表示
+   スマホ切り替え
 ======================================== */
 
 .mobile-view-switch {
@@ -164,11 +151,9 @@ button:active {
 
 .container {
     width: 100%;
-
     max-width: 1400px;
 
     margin: 0 auto;
-
     padding: 24px;
 
     display: grid;
@@ -178,6 +163,8 @@ button:active {
         minmax(0, 1fr);
 
     gap: 24px;
+
+    min-width: 0;
 }
 
 
@@ -187,6 +174,9 @@ button:active {
 
 .editor,
 .preview-area {
+    min-width: 0;
+    width: 100%;
+
     background: #ffffff;
 
     border: 1px solid #dddddd;
@@ -194,8 +184,6 @@ button:active {
     border-radius: 14px;
 
     padding: 24px;
-
-    min-width: 0;
 }
 
 
@@ -204,6 +192,9 @@ button:active {
 ======================================== */
 
 .form-group {
+    width: 100%;
+    min-width: 0;
+
     margin-bottom: 15px;
 }
 
@@ -213,16 +204,42 @@ button:active {
     margin-bottom: 6px;
 
     font-size: 14px;
-
     font-weight: 600;
 }
+
+.form-row {
+    width: 100%;
+    min-width: 0;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 12px;
+}
+
+.form-row > .form-group {
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* ========================================
+   入力欄
+======================================== */
 
 input,
 select,
 textarea {
-    width: 100%;
+    display: block;
 
+    width: 100%;
+    max-width: 100%;
     min-width: 0;
+
+    box-sizing: border-box;
 
     padding: 10px 12px;
 
@@ -231,11 +248,9 @@ textarea {
     border-radius: 8px;
 
     background: #ffffff;
-
     color: #222222;
 
     font-size: 14px;
-
     font-family: inherit;
 }
 
@@ -256,13 +271,25 @@ textarea {
     line-height: 1.6;
 }
 
-.form-row {
-    display: grid;
 
-    grid-template-columns:
-        1fr 1fr;
+/* ========================================
+   日付・時刻入力
+   基本設定
+======================================== */
 
-    gap: 12px;
+input[type="date"],
+input[type="time"] {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    font-family: inherit;
 }
 
 
@@ -272,29 +299,35 @@ textarea {
 
 .section-header {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 
     gap: 12px;
 
     margin-top: 28px;
-
     margin-bottom: 12px;
+
+    min-width: 0;
 }
 
 .section-header h2 {
     margin: 0;
+
+    min-width: 0;
 }
 
 
 /* ========================================
-   行程・費用カード
+   行程・費用・宿泊カード
 ======================================== */
 
 .schedule-item,
-.cost-item {
+.cost-item,
+.stay-item {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
     background: #ffffff;
 
     border: 1px solid #dddddd;
@@ -304,6 +337,17 @@ textarea {
     padding: 15px;
 
     margin-bottom: 12px;
+}
+
+
+/* カード内のフォーム */
+
+.schedule-item .form-group,
+.cost-item .form-group,
+.stay-item .form-group {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 }
 
 
@@ -362,9 +406,7 @@ textarea {
 
 .preview-header {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 
     gap: 12px;
@@ -378,13 +420,11 @@ textarea {
 
 .preview-header span {
     color: #777777;
-
     font-size: 12px;
 }
 
 .shiori {
     width: 100%;
-
     max-width: 760px;
 
     margin: 0 auto;
@@ -392,27 +432,23 @@ textarea {
     background: #ffffff;
 }
 
+
 /* ========================================
-   旅行のしおり 表紙
+   表紙
 ======================================== */
 
 .cover {
-
     position: relative;
 
-    min-height: 520px;
+    width: 100%;
+    min-height: 330px;
 
-    padding: 70px 60px;
+    padding: 60px;
 
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
+    align-items: flex-start;
 
     overflow: hidden;
 
@@ -425,26 +461,17 @@ textarea {
         );
 
     border-bottom: 1px solid #dddddd;
-
 }
 
-
-/* ----------------------------------------
-   表紙の装飾
----------------------------------------- */
-
 .cover::before {
-
     content: "";
 
     position: absolute;
 
     width: 280px;
-
     height: 280px;
 
     top: -120px;
-
     right: -100px;
 
     border-radius: 50%;
@@ -455,22 +482,17 @@ textarea {
         255,
         0.75
     );
-
 }
 
-
 .cover::after {
-
     content: "";
 
     position: absolute;
 
     width: 220px;
-
     height: 220px;
 
     bottom: -100px;
-
     left: -80px;
 
     border-radius: 50%;
@@ -481,239 +503,15 @@ textarea {
         255,
         0.7
     );
-
-}
-
-
-/* ----------------------------------------
-   TRIP SHIORI
----------------------------------------- */
-
-.cover-logo {
-
-    position: relative;
-
-    z-index: 1;
-
-    margin-bottom: 20px;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    letter-spacing: 5px;
-
-    color: #666666;
-
-}
-
-
-/* ----------------------------------------
-   タイトル
----------------------------------------- */
-
-.cover h1 {
-
-    position: relative;
-
-    z-index: 1;
-
-    max-width: 100%;
-
-    margin: 0;
-
-    color: #1f1f1f;
-
-    font-size: 44px;
-
-    font-weight: 800;
-
-    line-height: 1.25;
-
-    letter-spacing: 1px;
-
-    word-break: break-word;
-
-}
-
-
-/* ----------------------------------------
-   日程
----------------------------------------- */
-
-.cover #previewDate {
-
-    position: relative;
-
-    z-index: 1;
-
-    margin: 22px 0 4px;
-
-    color: #555555;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    letter-spacing: 0.5px;
-
-}
-
-
-/* ----------------------------------------
-   参加者
----------------------------------------- */
-
-.cover #previewParticipants {
-
-    position: relative;
-
-    z-index: 1;
-
-    margin: 4px 0 0;
-
-    color: #777777;
-
-    font-size: 14px;
-
-}
-
-
-/* ----------------------------------------
-   表紙下部のライン
----------------------------------------- */
-
-.cover h1::after {
-
-    content: "";
-
-    display: block;
-
-    width: 70px;
-
-    height: 3px;
-
-    margin: 22px auto 0;
-
-    border-radius: 999px;
-
-    background: #222222;
-
-}
-
-
-/* ========================================
-   スマートフォン用表紙
-======================================== */
-
-@media (max-width: 700px) {
-
-    .cover {
-
-        min-height: 430px;
-
-        padding:
-            50px
-            24px;
-
-    }
-
-
-    .cover-logo {
-
-        margin-bottom: 16px;
-
-        font-size: 11px;
-
-        letter-spacing: 4px;
-
-    }
-
-
-    .cover h1 {
-
-        font-size: 32px;
-
-        line-height: 1.3;
-
-    }
-
-
-    .cover #previewDate {
-
-        margin-top: 20px;
-
-        font-size: 14px;
-
-    }
-
-
-    .cover #previewParticipants {
-
-        font-size: 13px;
-
-    }
-
-
-}
-
-
-/* ========================================
-   小型スマートフォン
-======================================== */
-
-@media (max-width: 400px) {
-
-    .cover {
-
-        min-height: 390px;
-
-        padding:
-            42px
-            18px;
-
-    }
-
-
-    .cover-logo {
-
-        font-size: 10px;
-
-        letter-spacing: 3px;
-
-    }
-
-
-    .cover h1 {
-
-        font-size: 28px;
-
-    }
-
-}
-
-
-.cover {
-    min-height: 330px;
-
-    padding: 60px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: flex-start;
-
-    background: #f7f7f7;
-
-    border-bottom: 1px solid #dddddd;
 }
 
 .cover-logo {
+    position: relative;
+    z-index: 1;
+
+    margin-bottom: 4px;
+
     font-size: 12px;
-
     font-weight: 700;
 
     letter-spacing: 3px;
@@ -722,19 +520,55 @@ textarea {
 }
 
 .cover h1 {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 100%;
+
     margin: 18px 0;
 
+    color: #1f1f1f;
+
     font-size: 40px;
+    font-weight: 800;
 
     line-height: 1.25;
 
     word-break: break-word;
 }
 
+.cover h1::after {
+    content: "";
+
+    display: block;
+
+    width: 70px;
+    height: 3px;
+
+    margin-top: 22px;
+
+    border-radius: 999px;
+
+    background: #222222;
+}
+
 .cover p {
+    position: relative;
+    z-index: 1;
+
     margin: 4px 0;
 
     color: #666666;
+}
+
+.cover #previewDate {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.cover #previewParticipants {
+    font-size: 14px;
 }
 
 
@@ -743,6 +577,9 @@ textarea {
 ======================================== */
 
 .preview-section {
+    width: 100%;
+    min-width: 0;
+
     padding: 30px 45px;
 
     border-bottom: 1px solid #eeeeee;
@@ -762,6 +599,9 @@ textarea {
 ======================================== */
 
 .day-section {
+    width: 100%;
+    min-width: 0;
+
     margin-bottom: 40px;
 }
 
@@ -771,9 +611,7 @@ textarea {
 
 .day-header {
     display: flex;
-
     align-items: center;
-
     flex-wrap: wrap;
 
     gap: 10px;
@@ -789,13 +627,11 @@ textarea {
 
 .day-number {
     font-size: 1.15rem;
-
     font-weight: 700;
 }
 
 .day-date {
     color: #666666;
-
     font-size: 0.95rem;
 }
 
@@ -806,6 +642,7 @@ textarea {
 
 .timeline {
     width: 100%;
+    min-width: 0;
 }
 
 .timeline-item {
@@ -816,18 +653,19 @@ textarea {
         40px
         minmax(0, 1fr);
 
+    width: 100%;
+    min-width: 0;
+
     min-height: 90px;
 }
 
 .timeline-time {
     padding-top: 2px;
-
     padding-right: 12px;
 
     text-align: right;
 
     font-size: 0.95rem;
-
     font-weight: 700;
 }
 
@@ -841,11 +679,9 @@ textarea {
 
 .timeline-dot {
     position: relative;
-
     z-index: 2;
 
     width: 16px;
-
     height: 16px;
 
     margin-top: 3px;
@@ -861,7 +697,6 @@ textarea {
     position: absolute;
 
     top: 18px;
-
     bottom: -1px;
 
     width: 2px;
@@ -881,7 +716,6 @@ textarea {
 
 .timeline-place {
     font-size: 1.05rem;
-
     font-weight: 700;
 
     line-height: 1.5;
@@ -903,7 +737,6 @@ textarea {
 
 .timeline-transport {
     display: inline-flex;
-
     align-items: center;
 
     gap: 5px;
@@ -943,9 +776,7 @@ textarea {
 
 .cost-day-header {
     display: flex;
-
     align-items: center;
-
     flex-wrap: wrap;
 
     gap: 10px;
@@ -961,9 +792,7 @@ textarea {
 
 .cost-preview {
     display: flex;
-
     justify-content: space-between;
-
     align-items: flex-start;
 
     gap: 15px;
@@ -971,6 +800,8 @@ textarea {
     padding: 10px 0;
 
     border-bottom: 1px solid #eeeeee;
+
+    min-width: 0;
 }
 
 .cost-category-preview {
@@ -979,7 +810,6 @@ textarea {
     color: #666666;
 
     font-size: 12px;
-
     font-weight: 700;
 }
 
@@ -992,6 +822,8 @@ textarea {
 }
 
 .cost-name {
+    min-width: 0;
+
     word-break: break-word;
 }
 
@@ -1009,7 +841,6 @@ textarea {
     display: flex;
 
     justify-content: flex-end;
-
     align-items: center;
 
     gap: 30px;
@@ -1051,7 +882,6 @@ textarea {
 
 .map {
     width: 100%;
-
     height: 400px;
 
     margin-top: 16px;
@@ -1068,22 +898,19 @@ textarea {
 
 .numbered-marker-wrapper {
     background: transparent;
-
     border: none;
 }
 
 .numbered-marker {
     width: 34px;
-
     height: 34px;
-
-    border-radius: 50%;
 
     display: flex;
 
     justify-content: center;
-
     align-items: center;
+
+    border-radius: 50%;
 
     background: #222222;
 
@@ -1095,8 +922,57 @@ textarea {
         0 2px 6px rgba(0, 0, 0, 0.3);
 
     font-size: 15px;
-
     font-weight: 700;
+}
+
+
+/* ========================================
+   宿泊地
+======================================== */
+
+.stay-item {
+    width: 100%;
+    min-width: 0;
+}
+
+.stay-preview {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-top: 18px;
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    background: #f7f7f7;
+}
+
+.stay-icon {
+    flex-shrink: 0;
+
+    font-size: 22px;
+}
+
+.stay-info {
+    min-width: 0;
+}
+
+.stay-label {
+    margin-bottom: 2px;
+
+    color: #777777;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.stay-place-preview {
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    word-break: break-word;
 }
 
 
@@ -1107,7 +983,6 @@ textarea {
 @media (max-width: 1050px) {
 
     .container {
-
         grid-template-columns:
             minmax(300px, 420px)
             minmax(0, 1fr);
@@ -1119,22 +994,17 @@ textarea {
 
     .editor,
     .preview-area {
-
         padding: 18px;
     }
 
     .preview-section {
-
         padding-left: 30px;
-
         padding-right: 30px;
     }
 
     .cover {
-
         padding: 45px;
     }
-
 }
 
 
@@ -1149,9 +1019,12 @@ textarea {
     -------------------------------- */
 
     body {
-
         background: #ffffff;
 
+        width: 100%;
+        max-width: 100%;
+
+        overflow-x: hidden;
     }
 
 
@@ -1160,61 +1033,46 @@ textarea {
     -------------------------------- */
 
     .header {
-
         position: sticky;
-
         top: 0;
 
-        z-index: 1000;
+        width: 100%;
 
-        padding:
-            10px
-            12px;
+        padding: 10px 12px;
 
         display: flex;
-
         flex-direction: column;
-
         align-items: stretch;
 
         gap: 8px;
 
+        min-width: 0;
     }
-
 
     .header-title {
+        width: 100%;
+        min-width: 0;
 
         text-align: center;
-
     }
-
 
     .header-title h1 {
-
         font-size: 18px;
-
     }
-
 
     .logo {
-
         font-size: 9px;
-
         letter-spacing: 1.5px;
-
     }
 
-
     .header-actions {
-
         width: 100%;
+        min-width: 0;
 
         display: flex;
-
         flex-direction: column;
 
         gap: 8px;
-
     }
 
 
@@ -1223,17 +1081,16 @@ textarea {
     -------------------------------- */
 
     .pdf-button {
+        display: block;
 
         width: 100%;
+        max-width: 100%;
 
         min-height: 42px;
 
-        padding:
-            9px
-            12px;
+        padding: 9px 12px;
 
         font-size: 13px;
-
     }
 
 
@@ -1242,14 +1099,14 @@ textarea {
     -------------------------------- */
 
     .mobile-view-switch {
-
         display: grid;
 
         grid-template-columns:
-            1fr
-            1fr;
+            minmax(0, 1fr)
+            minmax(0, 1fr);
 
         width: 100%;
+        max-width: 100%;
 
         padding: 3px;
 
@@ -1259,16 +1116,16 @@ textarea {
 
         background: #eef0f2;
 
+        min-width: 0;
     }
 
-
     .view-switch-button {
+        width: 100%;
+        min-width: 0;
 
         min-height: 40px;
 
-        padding:
-            7px
-            10px;
+        padding: 7px 10px;
 
         border-radius: 8px;
 
@@ -1277,14 +1134,10 @@ textarea {
         color: #666666;
 
         font-size: 13px;
-
         font-weight: 600;
-
     }
 
-
     .view-switch-button.active {
-
         background: #ffffff;
 
         color: #222222;
@@ -1294,7 +1147,6 @@ textarea {
             1px
             4px
             rgba(0, 0, 0, 0.12);
-
     }
 
 
@@ -1303,34 +1155,25 @@ textarea {
     -------------------------------- */
 
     body.shiori-mode .editor {
-
         display: none !important;
-
     }
-
 
     body.shiori-mode .preview-area {
-
         display: block !important;
 
         width: 100%;
-
+        max-width: 100%;
     }
-
 
     body.edit-mode .editor {
-
         display: block !important;
 
         width: 100%;
-
+        max-width: 100%;
     }
 
-
     body.edit-mode .preview-area {
-
         display: none !important;
-
     }
 
 
@@ -1339,27 +1182,27 @@ textarea {
     -------------------------------- */
 
     .container {
-
-        display: block;
+        display: block !important;
 
         width: 100%;
+        max-width: 100%;
 
+        margin: 0;
         padding: 0;
 
+        min-width: 0;
     }
-
 
     .editor,
     .preview-area {
-
         width: 100%;
+        max-width: 100%;
+        min-width: 0;
 
         border: none;
-
         border-radius: 0;
 
         padding: 16px;
-
     }
 
 
@@ -1368,90 +1211,170 @@ textarea {
     -------------------------------- */
 
     .form-row {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
 
-        grid-template-columns: 1fr;
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr);
 
         gap: 0;
-
     }
 
+    .form-row > .form-group {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .form-group {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+
+    /* --------------------------------
+       入力欄
+    -------------------------------- */
 
     input,
     select,
     textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        box-sizing: border-box;
 
         min-height: 44px;
 
         font-size: 16px;
-
-    }
-
-
-    button {
-
-        min-height: 42px;
-
     }
 
 
     /* --------------------------------
-       セクション
+       日付・時刻
+       ★今回の重要部分
     -------------------------------- */
 
-    .section-header {
+    input[type="date"],
+    input[type="time"] {
+        display: block;
 
-        margin-top: 24px;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
 
-    }
+        box-sizing: border-box;
 
+        height: 44px;
 
-    .section-header h2 {
-
-        font-size: 20px;
-
-    }
-
-
-    .add-button {
+        margin: 0;
 
         padding:
-            9px
-            11px;
+            8px
+            8px;
+
+        border: 1px solid #cccccc;
+
+        border-radius: 8px;
+
+        background: #ffffff;
+
+        color: #222222;
+
+        font-family: inherit;
+
+        font-size: 16px;
+
+        line-height: 1.2;
+
+        -webkit-box-sizing: border-box;
+
+        /*
+         * スマホのネイティブ入力幅を
+         * 親要素の幅に合わせる
+         */
+        -webkit-appearance: none;
+        appearance: none;
+
+        overflow: hidden;
+    }
+
+
+    /* --------------------------------
+       IDで明示
+    -------------------------------- */
+
+    #startDate,
+    #endDate,
+    .schedule-date,
+    .schedule-time,
+    .stay-date,
+    .cost-date {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        box-sizing: border-box;
+    }
+
+
+    /* --------------------------------
+       カード
+    -------------------------------- */
+
+    .schedule-item,
+    .cost-item,
+    .stay-item {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        padding: 14px;
+    }
+
+
+    /* --------------------------------
+       ボタン
+    -------------------------------- */
+
+    button {
+        min-height: 42px;
+    }
+
+    .section-header {
+        width: 100%;
+        min-width: 0;
+
+        margin-top: 24px;
+    }
+
+    .section-header h2 {
+        font-size: 20px;
+    }
+
+    .add-button {
+        flex-shrink: 0;
+
+        padding: 9px 11px;
 
         font-size: 13px;
 
         white-space: nowrap;
-
     }
-
-
-    /* --------------------------------
-       入力カード
-    -------------------------------- */
-
-    .schedule-item,
-    .cost-item {
-
-        padding: 14px;
-
-        border-radius: 11px;
-
-    }
-
 
     .delete-button {
-
         width: 100%;
-
-        margin-top: 8px;
-
+        max-width: 100%;
     }
 
-
     .map-add-button {
-
         width: 100%;
-
+        max-width: 100%;
     }
 
 
@@ -1460,25 +1383,18 @@ textarea {
     -------------------------------- */
 
     .preview-area {
-
         padding: 0;
-
     }
-
 
     .preview-header {
-
         display: none;
-
     }
 
-
     .shiori {
-
         width: 100%;
-
         max-width: none;
 
+        margin: 0;
     }
 
 
@@ -1487,6 +1403,8 @@ textarea {
     -------------------------------- */
 
     .cover {
+        width: 100%;
+        max-width: 100%;
 
         min-height: 290px;
 
@@ -1494,17 +1412,20 @@ textarea {
             38px
             24px;
 
+        align-items: center;
+
+        text-align: center;
     }
 
-
     .cover h1 {
+        width: 100%;
+        max-width: 100%;
 
         font-size: 30px;
 
         margin:
             14px
             0;
-
     }
 
 
@@ -1513,18 +1434,17 @@ textarea {
     -------------------------------- */
 
     .preview-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
 
         padding:
             24px
             18px;
-
     }
 
-
     .preview-section h2 {
-
         font-size: 20px;
-
     }
 
 
@@ -1533,14 +1453,10 @@ textarea {
     -------------------------------- */
 
     .day-section {
-
         margin-bottom: 28px;
-
     }
 
-
     .day-header {
-
         gap: 7px;
 
         margin-bottom: 20px;
@@ -1548,21 +1464,14 @@ textarea {
         padding:
             10px
             12px;
-
     }
-
 
     .day-number {
-
         font-size: 1rem;
-
     }
 
-
     .day-date {
-
         font-size: 0.85rem;
-
     }
 
 
@@ -1571,6 +1480,8 @@ textarea {
     -------------------------------- */
 
     .timeline-item {
+        width: 100%;
+        min-width: 0;
 
         grid-template-columns:
             52px
@@ -1578,62 +1489,42 @@ textarea {
             minmax(0, 1fr);
 
         min-height: 78px;
-
     }
 
-
     .timeline-time {
-
         padding-right: 7px;
 
         font-size: 0.8rem;
-
     }
-
 
     .timeline-dot {
-
         width: 14px;
-
         height: 14px;
-
     }
-
 
     .timeline-connector {
-
         top: 16px;
-
     }
 
-
     .timeline-content {
+        min-width: 0;
 
         padding:
             0
             0
             22px
             7px;
-
     }
-
 
     .timeline-place {
-
         font-size: 0.95rem;
-
     }
-
 
     .timeline-description {
-
         font-size: 0.82rem;
-
     }
 
-
     .timeline-transport {
-
         margin-top: 6px;
 
         padding:
@@ -1641,7 +1532,6 @@ textarea {
             8px;
 
         font-size: 0.74rem;
-
     }
 
 
@@ -1650,45 +1540,31 @@ textarea {
     -------------------------------- */
 
     .cost-day-section {
-
         margin-bottom: 24px;
-
     }
 
-
     .cost-day-header {
-
         padding:
             9px
             11px;
-
     }
 
-
     .cost-preview {
-
         gap: 10px;
 
         padding:
             9px
             0;
-
     }
-
 
     .cost-category-preview {
-
         font-size: 11px;
-
     }
 
-
     .total {
-
         gap: 15px;
 
         font-size: 17px;
-
     }
 
 
@@ -1697,6 +1573,8 @@ textarea {
     -------------------------------- */
 
     .map {
+        width: 100%;
+        max-width: 100%;
 
         height: 320px;
 
@@ -1705,10 +1583,7 @@ textarea {
             0
             0;
 
-        width: 100%;
-
         border-radius: 12px;
-
     }
 
 
@@ -1717,30 +1592,41 @@ textarea {
     -------------------------------- */
 
     .schedule-url-link {
-
         display: inline-block;
 
         padding:
             4px
             0;
-
     }
 
 
     /* --------------------------------
-       SVG / 番号付きマーカー
+       宿泊地
+    -------------------------------- */
+
+    .stay-preview {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+
+        margin-top: 14px;
+
+        padding:
+            12px
+            14px;
+    }
+
+
+    /* --------------------------------
+       マーカー
     -------------------------------- */
 
     .numbered-marker {
-
         width: 32px;
-
         height: 32px;
 
         font-size: 14px;
-
     }
-
 }
 
 
@@ -1751,250 +1637,94 @@ textarea {
 @media (max-width: 400px) {
 
     .header {
-
         padding:
             9px
             10px;
-
     }
-
 
     .header-title h1 {
-
         font-size: 16px;
-
     }
-
 
     .pdf-button {
-
         font-size: 12px;
-
     }
-
 
     .view-switch-button {
-
         font-size: 12px;
-
     }
-
 
     .editor,
     .preview-area {
-
         padding: 12px;
-
     }
 
-
     .preview-section {
-
         padding:
             22px
             14px;
-
     }
 
-
     .cover {
-
         min-height: 260px;
 
         padding:
             32px
             20px;
-
     }
-
 
     .cover h1 {
-
         font-size: 26px;
-
     }
 
-
     .timeline-item {
-
         grid-template-columns:
             47px
             24px
             minmax(0, 1fr);
-
     }
-
 
     .timeline-time {
-
         font-size: 0.74rem;
-
     }
-
 
     .timeline-place {
-
         font-size: 0.9rem;
-
     }
-
 
     .timeline-description {
-
         font-size: 0.78rem;
-
     }
-
 
     .map {
-
         height: 280px;
-
     }
 
+
+    /* 小型端末の日付・時刻 */
+
+    input[type="date"],
+    input[type="time"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        height: 42px;
+
+        padding:
+            7px
+            7px;
+
+        font-size: 15px;
+    }
 }
 
 
 /* ========================================
-   PDF
-======================================== */
-
-@media print {
-
-    body {
-
-        background: #ffffff;
-
-        margin: 0;
-
-        padding: 0;
-
-    }
-
-
-    .header,
-    .editor,
-    .preview-header {
-
-        display: none !important;
-
-    }
-
-
-    .container {
-
-        display: block;
-
-        max-width: none;
-
-        padding: 0;
-
-    }
-
-
-    .preview-area {
-
-        display: block;
-
-        border: none;
-
-        border-radius: 0;
-
-        padding: 0;
-
-    }
-
-
-    .shiori {
-
-        width: 100%;
-
-        max-width: none;
-
-        margin: 0;
-
-        box-shadow: none;
-
-        border: none;
-
-    }
-
-
-    .cover {
-
-        page-break-after: always;
-
-        break-after: page;
-
-    }
-
-
-    .day-section {
-
-        page-break-inside: avoid;
-
-        break-inside: avoid;
-
-    }
-
-
-    .timeline-item {
-
-        page-break-inside: avoid;
-
-        break-inside: avoid;
-
-    }
-
-
-    .cost-day-section {
-
-        page-break-inside: avoid;
-
-        break-inside: avoid;
-
-    }
-
-
-    .cost-preview,
-    .category-total,
-    .total {
-
-        page-break-inside: avoid;
-
-        break-inside: avoid;
-
-    }
-
-
-    a {
-
-        color: inherit;
-
-        text-decoration: none;
-
-    }
-
-
-    @page {
-
-        size: A4;
-
-        margin: 15mm;
-
-    }
-
-}
-
-/* ========================================
-   PC版レイアウトを明示的に固定
+   PC版を明示
 ======================================== */
 
 @media (min-width: 701px) {
-
-    /* --------------------------------
-       ヘッダー
-    -------------------------------- */
 
     .header {
         display: flex !important;
@@ -2004,21 +1734,13 @@ textarea {
         justify-content: space-between !important;
 
         align-items: center !important;
-
-        width: 100%;
-
-        padding:
-            14px
-            28px;
     }
-
 
     .header-title {
         width: auto !important;
 
         text-align: left !important;
     }
-
 
     .header-actions {
         width: auto !important;
@@ -2030,32 +1752,17 @@ textarea {
         align-items: center !important;
 
         justify-content: flex-end !important;
-
-        gap: 10px;
     }
-
 
     .pdf-button {
         width: auto !important;
 
         flex-shrink: 0;
-
-        white-space: nowrap;
     }
-
-
-    /* --------------------------------
-       スマホ用切り替えボタンはPCでは非表示
-    -------------------------------- */
 
     .mobile-view-switch {
         display: none !important;
     }
-
-
-    /* --------------------------------
-       メインを2カラムに戻す
-    -------------------------------- */
 
     .container {
         display: grid !important;
@@ -2077,17 +1784,11 @@ textarea {
         gap: 24px;
     }
 
-
-    /* --------------------------------
-       編集画面・プレビューを表示
-    -------------------------------- */
-
     .editor {
         display: block !important;
 
         width: auto !important;
     }
-
 
     .preview-area {
         display: block !important;
@@ -2095,43 +1796,36 @@ textarea {
         width: auto !important;
     }
 
+    .form-row {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+    }
 }
 
+
 /* ========================================
-   PDF出力：プレビューのみ
-   ※このブロックはCSSの一番最後に置く
+   PDF
 ======================================== */
 
 @media print {
 
-    /* --------------------------------
-       ヘッダーを非表示
-    -------------------------------- */
+    body {
+        background: #ffffff;
 
-    body > .header {
-
-        display: none !important;
-
+        margin: 0;
+        padding: 0;
     }
 
-
-    /* --------------------------------
-       左側の編集画面を非表示
-    -------------------------------- */
-
-    body > .container > .editor {
-
+    .header,
+    .editor,
+    .preview-header,
+    .mobile-view-switch,
+    .pdf-button {
         display: none !important;
-
     }
 
-
-    /* --------------------------------
-       プレビューエリアだけ表示
-    -------------------------------- */
-
-    body > .container {
-
+    .container {
         display: block !important;
 
         width: 100%;
@@ -2141,12 +1835,9 @@ textarea {
         margin: 0;
 
         padding: 0;
-
     }
 
-
-    body > .container > .preview-area {
-
+    .preview-area {
         display: block !important;
 
         width: 100%;
@@ -2158,31 +1849,12 @@ textarea {
         padding: 0;
 
         border: none;
-
         border-radius: 0;
 
         background: #ffffff;
-
     }
-
-
-    /* --------------------------------
-       「プレビュー」という見出しも消す
-    -------------------------------- */
-
-    .preview-header {
-
-        display: none !important;
-
-    }
-
-
-    /* --------------------------------
-       しおり本体
-    -------------------------------- */
 
     .shiori {
-
         display: block !important;
 
         width: 100%;
@@ -2190,176 +1862,46 @@ textarea {
         max-width: none;
 
         margin: 0;
-
         padding: 0;
 
         background: #ffffff;
 
         border: none;
-
         box-shadow: none;
-
     }
-
-
-    /* --------------------------------
-       表紙
-    -------------------------------- */
 
     .cover {
-
         display: flex !important;
 
+        page-break-after: always;
+
+        break-after: page;
     }
 
+    .day-section,
+    .timeline-item,
+    .cost-day-section,
+    .cost-preview,
+    .category-total,
+    .total {
+        page-break-inside: avoid;
 
-    /* --------------------------------
-       その他のプレビュー内容
-    -------------------------------- */
+        break-inside: avoid;
+    }
 
     .preview-section {
-
         display: block !important;
-
     }
 
+    a {
+        color: inherit;
 
-    /* --------------------------------
-       不要なUIを非表示
-    -------------------------------- */
-
-    .mobile-view-switch,
-    .pdf-button {
-
-        display: none !important;
-
+        text-decoration: none;
     }
-
-
-    /* --------------------------------
-       ページ設定
-    -------------------------------- */
 
     @page {
-
         size: A4;
 
         margin: 15mm;
-
     }
-
-}
-
-/* ========================================
-   宿泊地
-======================================== */
-
-.stay-item {
-
-    margin-bottom: 12px;
-
-    padding: 15px;
-
-    background: #ffffff;
-
-    border: 1px solid #dddddd;
-
-    border-radius: 10px;
-
-}
-
-
-.stay-preview {
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 12px;
-
-    margin-top: 18px;
-
-    padding: 14px 16px;
-
-    border-radius: 12px;
-
-    background: #f7f7f7;
-
-}
-
-
-.stay-icon {
-
-    flex-shrink: 0;
-
-    font-size: 22px;
-
-}
-
-
-.stay-info {
-
-    min-width: 0;
-
-}
-
-
-.stay-label {
-
-    margin-bottom: 2px;
-
-    color: #777777;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-}
-
-
-.stay-place-preview {
-
-    font-size: 0.95rem;
-
-    font-weight: 700;
-
-    word-break: break-word;
-
-}
-
-
-/* スマートフォン */
-
-@media (max-width: 700px) {
-
-    .stay-preview {
-
-        margin-top: 14px;
-
-        padding: 12px 14px;
-
-    }
-
-}
-
-/* ========================================
-   スマートフォン
-   日付・時刻入力欄の見切れ対策
-======================================== */
-
-@media (max-width: 700px) {
-
-    .editor {
-        outline: 3px solid red !important;
-    }
-
-    .form-group {
-        outline: 2px solid blue !important;
-    }
-
-    input[type="date"],
-    input[type="time"] {
-        outline: 3px solid green !important;
-    }
-
 }
