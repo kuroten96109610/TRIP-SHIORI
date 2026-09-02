@@ -2350,72 +2350,63 @@ textarea {
 @media (max-width: 700px) {
 
     /* --------------------------------
-       フォーム全体
+       フォームの外側
     -------------------------------- */
+
+    .editor,
+    .editor * {
+        box-sizing: border-box;
+    }
 
     .form-group,
     .form-row,
     .schedule-item,
-    .cost-item {
-
+    .cost-item,
+    .stay-item {
         width: 100%;
-
         max-width: 100%;
-
         min-width: 0;
-
-        box-sizing: border-box;
-
-    }
-
-
-    .form-row {
-
-        display: grid;
-
-        grid-template-columns: 1fr;
-
-        width: 100%;
-
-        min-width: 0;
-
-    }
-
-
-    .form-row > .form-group {
-
-        width: 100%;
-
-        min-width: 0;
-
-        max-width: 100%;
-
     }
 
 
     /* --------------------------------
-       入力欄全体
+       フォーム行
+    -------------------------------- */
+
+    .form-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .form-row > .form-group {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+
+    /* --------------------------------
+       入力欄
     -------------------------------- */
 
     input,
     select,
     textarea {
-
         display: block;
 
         width: 100%;
-
         max-width: 100%;
-
         min-width: 0;
 
         box-sizing: border-box;
-
     }
 
 
     /* --------------------------------
-       日付・時刻入力
+       日付・時刻
     -------------------------------- */
 
     input[type="date"],
@@ -2424,29 +2415,41 @@ textarea {
         display: block;
 
         width: 100% !important;
-
         max-width: 100% !important;
-
         min-width: 0 !important;
-
-        height: 44px;
 
         box-sizing: border-box;
 
-        padding: 8px 8px;
+        height: 44px;
 
         margin: 0;
 
-        font-size: 15px;
+        padding: 8px 10px;
 
-        line-height: 1.2;
+        border: 1px solid #cccccc;
+        border-radius: 8px;
+
+        background: #ffffff;
+
+        color: #222222;
+
+        font-family: inherit;
+        font-size: 16px;
+
+        line-height: normal;
+
+        /*
+         * スマホのネイティブ日付入力が
+         * 右側にはみ出す問題を防ぐ
+         */
+        -webkit-appearance: none;
+        appearance: none;
 
         overflow: hidden;
 
-        -webkit-box-sizing: border-box;
+        text-overflow: clip;
 
-        -webkit-text-size-adjust: 100%;
-
+        white-space: nowrap;
     }
 
 
@@ -2456,15 +2459,9 @@ textarea {
 
     #startDate,
     #endDate {
-
         width: 100% !important;
-
         max-width: 100% !important;
-
         min-width: 0 !important;
-
-        box-sizing: border-box;
-
     }
 
 
@@ -2474,72 +2471,31 @@ textarea {
 
     .schedule-date,
     .schedule-time {
-
         width: 100% !important;
-
         max-width: 100% !important;
-
         min-width: 0 !important;
-
-        box-sizing: border-box;
-
     }
 
 
     /* --------------------------------
-       費用の日付
+       宿泊日
+    -------------------------------- */
+
+    .stay-date {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+
+    /* --------------------------------
+       費用の発生日
     -------------------------------- */
 
     .cost-date {
-
         width: 100% !important;
-
         max-width: 100% !important;
-
         min-width: 0 !important;
-
-        box-sizing: border-box;
-
-    }
-
-
-    /* --------------------------------
-       カード内部
-    -------------------------------- */
-
-    .schedule-item,
-    .cost-item {
-
-        overflow: hidden;
-
-    }
-
-
-    /* --------------------------------
-       Chrome / Edge / Android系
-    -------------------------------- */
-
-    input[type="date"]::-webkit-date-and-time-value,
-    input[type="time"]::-webkit-date-and-time-value {
-
-        min-width: 0;
-
-        width: auto;
-
-        text-align: left;
-
-    }
-
-
-    input[type="date"]::-webkit-calendar-picker-indicator,
-    input[type="time"]::-webkit-calendar-picker-indicator {
-
-        margin: 0;
-
-        padding: 0;
-
-        max-width: 18px;
-
     }
 
 
@@ -2552,13 +2508,16 @@ textarea {
         input[type="date"],
         input[type="time"] {
 
+            width: 100% !important;
+            max-width: 100% !important;
+
             height: 42px;
 
-            padding-left: 7px;
+            padding:
+                7px
+                8px;
 
-            padding-right: 5px;
-
-            font-size: 14px;
+            font-size: 15px;
 
         }
 
