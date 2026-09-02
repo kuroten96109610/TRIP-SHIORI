@@ -2341,3 +2341,72 @@ textarea {
     }
 
 }
+
+/* ========================================
+   スマートフォン
+   日付・時刻入力欄の見切れ対策
+======================================== */
+
+@media (max-width: 700px) {
+
+    /* 日付・時刻入力 */
+
+    input[type="date"],
+    input[type="time"] {
+
+        display: block;
+
+        width: 100%;
+
+        max-width: 100%;
+
+        min-width: 0;
+
+        padding-left: 10px;
+
+        padding-right: 10px;
+
+        font-size: 16px;
+
+        line-height: 1.4;
+
+        box-sizing: border-box;
+
+    }
+
+
+    /* Chrome / Edge系 */
+
+    input[type="date"]::-webkit-date-and-time-value,
+    input[type="time"]::-webkit-date-and-time-value {
+
+        text-align: left;
+
+    }
+
+
+    /* カレンダー・時計アイコン */
+
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+
+        flex-shrink: 0;
+
+        margin: 0;
+
+    }
+
+
+    /* 行程・費用カード内 */
+
+    .schedule-item input[type="date"],
+    .schedule-item input[type="time"],
+    .cost-item input[type="date"] {
+
+        width: 100%;
+
+        max-width: 100%;
+
+    }
+
+}
