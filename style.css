@@ -2349,10 +2349,57 @@ textarea {
 
 @media (max-width: 700px) {
 
-    /* 日付・時刻入力 */
+    /* --------------------------------
+       フォーム全体
+    -------------------------------- */
 
-    input[type="date"],
-    input[type="time"] {
+    .form-group,
+    .form-row,
+    .schedule-item,
+    .cost-item {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        min-width: 0;
+
+        box-sizing: border-box;
+
+    }
+
+
+    .form-row {
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        width: 100%;
+
+        min-width: 0;
+
+    }
+
+
+    .form-row > .form-group {
+
+        width: 100%;
+
+        min-width: 0;
+
+        max-width: 100%;
+
+    }
+
+
+    /* --------------------------------
+       入力欄全体
+    -------------------------------- */
+
+    input,
+    select,
+    textarea {
 
         display: block;
 
@@ -2362,50 +2409,158 @@ textarea {
 
         min-width: 0;
 
-        padding-left: 10px;
+        box-sizing: border-box;
 
-        padding-right: 10px;
+    }
 
-        font-size: 16px;
 
-        line-height: 1.4;
+    /* --------------------------------
+       日付・時刻入力
+    -------------------------------- */
+
+    input[type="date"],
+    input[type="time"] {
+
+        display: block;
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        min-width: 0 !important;
+
+        height: 44px;
+
+        box-sizing: border-box;
+
+        padding: 8px 8px;
+
+        margin: 0;
+
+        font-size: 15px;
+
+        line-height: 1.2;
+
+        overflow: hidden;
+
+        -webkit-box-sizing: border-box;
+
+        -webkit-text-size-adjust: 100%;
+
+    }
+
+
+    /* --------------------------------
+       開始日・終了日
+    -------------------------------- */
+
+    #startDate,
+    #endDate {
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        min-width: 0 !important;
 
         box-sizing: border-box;
 
     }
 
 
-    /* Chrome / Edge系 */
+    /* --------------------------------
+       行程の日付・時刻
+    -------------------------------- */
+
+    .schedule-date,
+    .schedule-time {
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        min-width: 0 !important;
+
+        box-sizing: border-box;
+
+    }
+
+
+    /* --------------------------------
+       費用の日付
+    -------------------------------- */
+
+    .cost-date {
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        min-width: 0 !important;
+
+        box-sizing: border-box;
+
+    }
+
+
+    /* --------------------------------
+       カード内部
+    -------------------------------- */
+
+    .schedule-item,
+    .cost-item {
+
+        overflow: hidden;
+
+    }
+
+
+    /* --------------------------------
+       Chrome / Edge / Android系
+    -------------------------------- */
 
     input[type="date"]::-webkit-date-and-time-value,
     input[type="time"]::-webkit-date-and-time-value {
+
+        min-width: 0;
+
+        width: auto;
 
         text-align: left;
 
     }
 
 
-    /* カレンダー・時計アイコン */
-
     input[type="date"]::-webkit-calendar-picker-indicator,
     input[type="time"]::-webkit-calendar-picker-indicator {
 
-        flex-shrink: 0;
-
         margin: 0;
+
+        padding: 0;
+
+        max-width: 18px;
 
     }
 
 
-    /* 行程・費用カード内 */
+    /* --------------------------------
+       小さいスマートフォン
+    -------------------------------- */
 
-    .schedule-item input[type="date"],
-    .schedule-item input[type="time"],
-    .cost-item input[type="date"] {
+    @media (max-width: 400px) {
 
-        width: 100%;
+        input[type="date"],
+        input[type="time"] {
 
-        max-width: 100%;
+            height: 42px;
+
+            padding-left: 7px;
+
+            padding-right: 5px;
+
+            font-size: 14px;
+
+        }
 
     }
 
