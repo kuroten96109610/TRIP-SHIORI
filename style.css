@@ -17,7 +17,9 @@ html {
 
 body {
     margin: 0;
+
     background: #f4f5f7;
+
     color: #222222;
 
     font-family:
@@ -39,22 +41,28 @@ body {
 
 .header {
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
 
     width: 100%;
 
+    padding: 14px 28px;
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     gap: 20px;
 
-    padding: 14px 28px;
-
     background: #ffffff;
 
     border-bottom: 1px solid #dddddd;
+
+    min-width: 0;
 }
 
 .header-title {
@@ -65,6 +73,7 @@ body {
     margin: 3px 0 0;
 
     font-size: 22px;
+
     line-height: 1.3;
 }
 
@@ -72,6 +81,7 @@ body {
     display: block;
 
     font-size: 11px;
+
     font-weight: 700;
 
     letter-spacing: 2px;
@@ -79,9 +89,16 @@ body {
     color: #666666;
 }
 
+
+/* ========================================
+   ヘッダー右側
+======================================== */
+
 .header-actions {
     display: flex;
+
     align-items: center;
+
     justify-content: flex-end;
 
     gap: 10px;
@@ -96,6 +113,7 @@ body {
 
 button {
     border: none;
+
     border-radius: 9px;
 
     padding: 10px 14px;
@@ -111,14 +129,17 @@ button:active {
 
 .pdf-button {
     background: #222222;
+
     color: #ffffff;
 
     font-weight: 700;
+
     white-space: nowrap;
 }
 
 .add-button {
     background: #eef0f2;
+
     color: #222222;
 
     font-weight: 600;
@@ -132,12 +153,13 @@ button:active {
     margin-top: 8px;
 
     background: #fff0f0;
+
     color: #b00020;
 }
 
 
 /* ========================================
-   スマホ切り替え
+   スマホ切り替えボタン
 ======================================== */
 
 .mobile-view-switch {
@@ -151,9 +173,11 @@ button:active {
 
 .container {
     width: 100%;
+
     max-width: 1400px;
 
     margin: 0 auto;
+
     padding: 24px;
 
     display: grid;
@@ -174,8 +198,9 @@ button:active {
 
 .editor,
 .preview-area {
-    min-width: 0;
     width: 100%;
+
+    min-width: 0;
 
     background: #ffffff;
 
@@ -193,6 +218,7 @@ button:active {
 
 .form-group {
     width: 100%;
+
     min-width: 0;
 
     margin-bottom: 15px;
@@ -204,11 +230,13 @@ button:active {
     margin-bottom: 6px;
 
     font-size: 14px;
+
     font-weight: 600;
 }
 
 .form-row {
     width: 100%;
+
     min-width: 0;
 
     display: grid;
@@ -222,6 +250,7 @@ button:active {
 
 .form-row > .form-group {
     width: 100%;
+
     min-width: 0;
 }
 
@@ -236,7 +265,9 @@ textarea {
     display: block;
 
     width: 100%;
+
     max-width: 100%;
+
     min-width: 0;
 
     box-sizing: border-box;
@@ -248,9 +279,11 @@ textarea {
     border-radius: 8px;
 
     background: #ffffff;
+
     color: #222222;
 
     font-size: 14px;
+
     font-family: inherit;
 }
 
@@ -274,7 +307,6 @@ textarea {
 
 /* ========================================
    日付・時刻入力
-   基本設定
 ======================================== */
 
 input[type="date"],
@@ -282,7 +314,9 @@ input[type="time"] {
     display: block;
 
     width: 100%;
+
     max-width: 100%;
+
     min-width: 0;
 
     box-sizing: border-box;
@@ -299,12 +333,15 @@ input[type="time"] {
 
 .section-header {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     gap: 12px;
 
     margin-top: 28px;
+
     margin-bottom: 12px;
 
     min-width: 0;
@@ -325,7 +362,9 @@ input[type="time"] {
 .cost-item,
 .stay-item {
     width: 100%;
+
     max-width: 100%;
+
     min-width: 0;
 
     background: #ffffff;
@@ -339,14 +378,13 @@ input[type="time"] {
     margin-bottom: 12px;
 }
 
-
-/* カード内のフォーム */
-
 .schedule-item .form-group,
 .cost-item .form-group,
 .stay-item .form-group {
     width: 100%;
+
     max-width: 100%;
+
     min-width: 0;
 }
 
@@ -406,7 +444,9 @@ input[type="time"] {
 
 .preview-header {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     gap: 12px;
@@ -420,11 +460,13 @@ input[type="time"] {
 
 .preview-header span {
     color: #777777;
+
     font-size: 12px;
 }
 
 .shiori {
     width: 100%;
+
     max-width: 760px;
 
     margin: 0 auto;
@@ -441,13 +483,17 @@ input[type="time"] {
     position: relative;
 
     width: 100%;
+
     min-height: 330px;
 
     padding: 60px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
     align-items: flex-start;
 
     overflow: hidden;
@@ -469,9 +515,11 @@ input[type="time"] {
     position: absolute;
 
     width: 280px;
+
     height: 280px;
 
     top: -120px;
+
     right: -100px;
 
     border-radius: 50%;
@@ -490,9 +538,11 @@ input[type="time"] {
     position: absolute;
 
     width: 220px;
+
     height: 220px;
 
     bottom: -100px;
+
     left: -80px;
 
     border-radius: 50%;
@@ -507,11 +557,13 @@ input[type="time"] {
 
 .cover-logo {
     position: relative;
+
     z-index: 1;
 
     margin-bottom: 4px;
 
     font-size: 12px;
+
     font-weight: 700;
 
     letter-spacing: 3px;
@@ -521,9 +573,11 @@ input[type="time"] {
 
 .cover h1 {
     position: relative;
+
     z-index: 1;
 
     width: 100%;
+
     max-width: 100%;
 
     margin: 18px 0;
@@ -531,6 +585,7 @@ input[type="time"] {
     color: #1f1f1f;
 
     font-size: 40px;
+
     font-weight: 800;
 
     line-height: 1.25;
@@ -544,6 +599,7 @@ input[type="time"] {
     display: block;
 
     width: 70px;
+
     height: 3px;
 
     margin-top: 22px;
@@ -555,6 +611,7 @@ input[type="time"] {
 
 .cover p {
     position: relative;
+
     z-index: 1;
 
     margin: 4px 0;
@@ -564,6 +621,7 @@ input[type="time"] {
 
 .cover #previewDate {
     font-size: 16px;
+
     font-weight: 600;
 }
 
@@ -578,6 +636,7 @@ input[type="time"] {
 
 .preview-section {
     width: 100%;
+
     min-width: 0;
 
     padding: 30px 45px;
@@ -600,6 +659,7 @@ input[type="time"] {
 
 .day-section {
     width: 100%;
+
     min-width: 0;
 
     margin-bottom: 40px;
@@ -611,7 +671,9 @@ input[type="time"] {
 
 .day-header {
     display: flex;
+
     align-items: center;
+
     flex-wrap: wrap;
 
     gap: 10px;
@@ -627,11 +689,13 @@ input[type="time"] {
 
 .day-number {
     font-size: 1.15rem;
+
     font-weight: 700;
 }
 
 .day-date {
     color: #666666;
+
     font-size: 0.95rem;
 }
 
@@ -642,6 +706,7 @@ input[type="time"] {
 
 .timeline {
     width: 100%;
+
     min-width: 0;
 }
 
@@ -654,6 +719,7 @@ input[type="time"] {
         minmax(0, 1fr);
 
     width: 100%;
+
     min-width: 0;
 
     min-height: 90px;
@@ -661,11 +727,13 @@ input[type="time"] {
 
 .timeline-time {
     padding-top: 2px;
+
     padding-right: 12px;
 
     text-align: right;
 
     font-size: 0.95rem;
+
     font-weight: 700;
 }
 
@@ -679,9 +747,11 @@ input[type="time"] {
 
 .timeline-dot {
     position: relative;
+
     z-index: 2;
 
     width: 16px;
+
     height: 16px;
 
     margin-top: 3px;
@@ -697,6 +767,7 @@ input[type="time"] {
     position: absolute;
 
     top: 18px;
+
     bottom: -1px;
 
     width: 2px;
@@ -716,6 +787,7 @@ input[type="time"] {
 
 .timeline-place {
     font-size: 1.05rem;
+
     font-weight: 700;
 
     line-height: 1.5;
@@ -737,6 +809,7 @@ input[type="time"] {
 
 .timeline-transport {
     display: inline-flex;
+
     align-items: center;
 
     gap: 5px;
@@ -776,7 +849,9 @@ input[type="time"] {
 
 .cost-day-header {
     display: flex;
+
     align-items: center;
+
     flex-wrap: wrap;
 
     gap: 10px;
@@ -792,16 +867,18 @@ input[type="time"] {
 
 .cost-preview {
     display: flex;
+
     justify-content: space-between;
+
     align-items: flex-start;
 
     gap: 15px;
 
+    min-width: 0;
+
     padding: 10px 0;
 
     border-bottom: 1px solid #eeeeee;
-
-    min-width: 0;
 }
 
 .cost-category-preview {
@@ -810,6 +887,7 @@ input[type="time"] {
     color: #666666;
 
     font-size: 12px;
+
     font-weight: 700;
 }
 
@@ -841,6 +919,7 @@ input[type="time"] {
     display: flex;
 
     justify-content: flex-end;
+
     align-items: center;
 
     gap: 30px;
@@ -882,6 +961,7 @@ input[type="time"] {
 
 .map {
     width: 100%;
+
     height: 400px;
 
     margin-top: 16px;
@@ -898,16 +978,19 @@ input[type="time"] {
 
 .numbered-marker-wrapper {
     background: transparent;
+
     border: none;
 }
 
 .numbered-marker {
     width: 34px;
+
     height: 34px;
 
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
     border-radius: 50%;
@@ -922,6 +1005,7 @@ input[type="time"] {
         0 2px 6px rgba(0, 0, 0, 0.3);
 
     font-size: 15px;
+
     font-weight: 700;
 }
 
@@ -932,21 +1016,26 @@ input[type="time"] {
 
 .stay-item {
     width: 100%;
+
     min-width: 0;
 }
 
 .stay-preview {
     display: flex;
+
     align-items: flex-start;
 
     gap: 12px;
 
     margin-top: 18px;
+
     padding: 14px 16px;
 
     border-radius: 12px;
 
     background: #f7f7f7;
+
+    min-width: 0;
 }
 
 .stay-icon {
@@ -965,11 +1054,13 @@ input[type="time"] {
     color: #777777;
 
     font-size: 12px;
+
     font-weight: 700;
 }
 
 .stay-place-preview {
     font-size: 0.95rem;
+
     font-weight: 700;
 
     word-break: break-word;
@@ -999,6 +1090,7 @@ input[type="time"] {
 
     .preview-section {
         padding-left: 30px;
+
         padding-right: 30px;
     }
 
@@ -1019,10 +1111,11 @@ input[type="time"] {
     -------------------------------- */
 
     body {
-        background: #ffffff;
-
         width: 100%;
+
         max-width: 100%;
+
+        background: #ffffff;
 
         overflow-x: hidden;
     }
@@ -1034,14 +1127,21 @@ input[type="time"] {
 
     .header {
         position: sticky;
+
         top: 0;
+
+        z-index: 1000;
 
         width: 100%;
 
-        padding: 10px 12px;
+        padding:
+            10px
+            12px;
 
         display: flex;
+
         flex-direction: column;
+
         align-items: stretch;
 
         gap: 8px;
@@ -1051,6 +1151,7 @@ input[type="time"] {
 
     .header-title {
         width: 100%;
+
         min-width: 0;
 
         text-align: center;
@@ -1062,14 +1163,17 @@ input[type="time"] {
 
     .logo {
         font-size: 9px;
+
         letter-spacing: 1.5px;
     }
 
     .header-actions {
         width: 100%;
+
         min-width: 0;
 
         display: flex;
+
         flex-direction: column;
 
         gap: 8px;
@@ -1084,11 +1188,14 @@ input[type="time"] {
         display: block;
 
         width: 100%;
+
         max-width: 100%;
 
         min-height: 42px;
 
-        padding: 9px 12px;
+        padding:
+            9px
+            12px;
 
         font-size: 13px;
     }
@@ -1106,7 +1213,10 @@ input[type="time"] {
             minmax(0, 1fr);
 
         width: 100%;
+
         max-width: 100%;
+
+        min-width: 0;
 
         padding: 3px;
 
@@ -1115,17 +1225,18 @@ input[type="time"] {
         border-radius: 10px;
 
         background: #eef0f2;
-
-        min-width: 0;
     }
 
     .view-switch-button {
         width: 100%;
+
         min-width: 0;
 
         min-height: 40px;
 
-        padding: 7px 10px;
+        padding:
+            7px
+            10px;
 
         border-radius: 8px;
 
@@ -1134,6 +1245,7 @@ input[type="time"] {
         color: #666666;
 
         font-size: 13px;
+
         font-weight: 600;
     }
 
@@ -1162,6 +1274,7 @@ input[type="time"] {
         display: block !important;
 
         width: 100%;
+
         max-width: 100%;
     }
 
@@ -1169,6 +1282,7 @@ input[type="time"] {
         display: block !important;
 
         width: 100%;
+
         max-width: 100%;
     }
 
@@ -1185,9 +1299,11 @@ input[type="time"] {
         display: block !important;
 
         width: 100%;
+
         max-width: 100%;
 
         margin: 0;
+
         padding: 0;
 
         min-width: 0;
@@ -1196,10 +1312,13 @@ input[type="time"] {
     .editor,
     .preview-area {
         width: 100%;
+
         max-width: 100%;
+
         min-width: 0;
 
         border: none;
+
         border-radius: 0;
 
         padding: 16px;
@@ -1212,7 +1331,9 @@ input[type="time"] {
 
     .form-row {
         width: 100%;
+
         max-width: 100%;
+
         min-width: 0;
 
         display: grid;
@@ -1225,13 +1346,17 @@ input[type="time"] {
 
     .form-row > .form-group {
         width: 100%;
+
         max-width: 100%;
+
         min-width: 0;
     }
 
     .form-group {
         width: 100%;
+
         max-width: 100%;
+
         min-width: 0;
     }
 
@@ -1243,8 +1368,12 @@ input[type="time"] {
     input,
     select,
     textarea {
+        display: block;
+
         width: 100% !important;
+
         max-width: 100% !important;
+
         min-width: 0 !important;
 
         box-sizing: border-box;
@@ -1257,7 +1386,6 @@ input[type="time"] {
 
     /* --------------------------------
        日付・時刻
-       ★今回の重要部分
     -------------------------------- */
 
     input[type="date"],
@@ -1265,7 +1393,9 @@ input[type="time"] {
         display: block;
 
         width: 100% !important;
+
         max-width: 100% !important;
+
         min-width: 0 !important;
 
         box-sizing: border-box;
@@ -1294,11 +1424,8 @@ input[type="time"] {
 
         -webkit-box-sizing: border-box;
 
-        /*
-         * スマホのネイティブ入力幅を
-         * 親要素の幅に合わせる
-         */
         -webkit-appearance: none;
+
         appearance: none;
 
         overflow: hidden;
@@ -1306,7 +1433,7 @@ input[type="time"] {
 
 
     /* --------------------------------
-       IDで明示
+       日付・時刻 対象指定
     -------------------------------- */
 
     #startDate,
@@ -1316,7 +1443,9 @@ input[type="time"] {
     .stay-date,
     .cost-date {
         width: 100% !important;
+
         max-width: 100% !important;
+
         min-width: 0 !important;
 
         box-sizing: border-box;
@@ -1331,7 +1460,9 @@ input[type="time"] {
     .cost-item,
     .stay-item {
         width: 100%;
+
         max-width: 100%;
+
         min-width: 0;
 
         padding: 14px;
@@ -1348,6 +1479,7 @@ input[type="time"] {
 
     .section-header {
         width: 100%;
+
         min-width: 0;
 
         margin-top: 24px;
@@ -1360,7 +1492,9 @@ input[type="time"] {
     .add-button {
         flex-shrink: 0;
 
-        padding: 9px 11px;
+        padding:
+            9px
+            11px;
 
         font-size: 13px;
 
@@ -1369,11 +1503,13 @@ input[type="time"] {
 
     .delete-button {
         width: 100%;
+
         max-width: 100%;
     }
 
     .map-add-button {
         width: 100%;
+
         max-width: 100%;
     }
 
@@ -1392,6 +1528,7 @@ input[type="time"] {
 
     .shiori {
         width: 100%;
+
         max-width: none;
 
         margin: 0;
@@ -1404,6 +1541,7 @@ input[type="time"] {
 
     .cover {
         width: 100%;
+
         max-width: 100%;
 
         min-height: 290px;
@@ -1419,6 +1557,7 @@ input[type="time"] {
 
     .cover h1 {
         width: 100%;
+
         max-width: 100%;
 
         font-size: 30px;
@@ -1435,7 +1574,9 @@ input[type="time"] {
 
     .preview-section {
         width: 100%;
+
         max-width: 100%;
+
         min-width: 0;
 
         padding:
@@ -1481,6 +1622,7 @@ input[type="time"] {
 
     .timeline-item {
         width: 100%;
+
         min-width: 0;
 
         grid-template-columns:
@@ -1499,6 +1641,7 @@ input[type="time"] {
 
     .timeline-dot {
         width: 14px;
+
         height: 14px;
     }
 
@@ -1574,6 +1717,7 @@ input[type="time"] {
 
     .map {
         width: 100%;
+
         max-width: 100%;
 
         height: 320px;
@@ -1606,7 +1750,9 @@ input[type="time"] {
 
     .stay-preview {
         width: 100%;
+
         max-width: 100%;
+
         min-width: 0;
 
         margin-top: 14px;
@@ -1623,6 +1769,7 @@ input[type="time"] {
 
     .numbered-marker {
         width: 32px;
+
         height: 32px;
 
         font-size: 14px;
@@ -1700,19 +1847,17 @@ input[type="time"] {
         height: 280px;
     }
 
-
-    /* 小型端末の日付・時刻 */
-
     input[type="date"],
     input[type="time"] {
         width: 100% !important;
+
         max-width: 100% !important;
+
         min-width: 0 !important;
 
         height: 42px;
 
         padding:
-            7px
             7px;
 
         font-size: 15px;
@@ -1721,7 +1866,7 @@ input[type="time"] {
 
 
 /* ========================================
-   PC版を明示
+   PC版
 ======================================== */
 
 @media (min-width: 701px) {
@@ -1814,6 +1959,7 @@ input[type="time"] {
         background: #ffffff;
 
         margin: 0;
+
         padding: 0;
     }
 
@@ -1849,6 +1995,7 @@ input[type="time"] {
         padding: 0;
 
         border: none;
+
         border-radius: 0;
 
         background: #ffffff;
@@ -1862,11 +2009,13 @@ input[type="time"] {
         max-width: none;
 
         margin: 0;
+
         padding: 0;
 
         background: #ffffff;
 
         border: none;
+
         box-shadow: none;
     }
 
